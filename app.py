@@ -1,7 +1,7 @@
 from flask_openapi3 import OpenAPI, Info, Tag
 from flask_cors import CORS
-from flask import redirect, request
-from MachineLearning import Charger, PreProcessor, Normalizer, Model, Evaluator, Creator
+from flask import redirect
+from MachineLearning import Model
 
 import pandas as pd
 
@@ -24,7 +24,7 @@ def predict():
     scaler = Model().charge_scaler()
 
     new_data = [[63, 1, 3, 160, 285, 1, 2, 200, 1, 3.5, 3, 3, 7],
-                [37, 0, 2, 130, 250, 0, 1, 187, 0, 3.5, 0, 0, 2],
+                [89, 0, 2, 130, 250, 1, 1, 187, 1, 3.5, 3, 3, 3],
                 [41, 1, 1, 130, 204, 0, 0, 172, 0, 1.4, 2, 0, 2]]
 
     column_names = ['age', 'sex', 'cp', 'trestbps', 'chol', 'fbs', 'restecg', 'thalach', 'exang', 'oldpeak', 'slope', 'ca', 'thal']
