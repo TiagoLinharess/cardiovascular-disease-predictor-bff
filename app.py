@@ -1,7 +1,7 @@
 from flask_openapi3 import OpenAPI, Info, Tag
 from flask_cors import CORS
 from flask import redirect
-from MachineLearning import Model
+from MachineLearning.models import Model
 from Schemas import PatientSchema, SuccessResponse, ErrorResponse, success_json, error_json
 
 import pandas as pd
