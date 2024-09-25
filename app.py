@@ -1,8 +1,8 @@
 from flask_openapi3 import OpenAPI, Info, Tag
 from flask_cors import CORS
 from flask import redirect
-from MachineLearning.models import Model
-from Schemas import PatientSchema, SuccessResponse, ErrorResponse, success_json, error_json
+from models import Pipeline
+from schemas import PatientSchema, SuccessResponse, ErrorResponse, success_json, error_json
 
 import pandas as pd
 
@@ -22,8 +22,8 @@ post_register_tag = Tag(name="Predição", description="Efetua a predição de d
 @app.post('/predict', tags=[post_register_tag], responses={"201": SuccessResponse, "400": ErrorResponse})
 def predict(form: PatientSchema):
     try:
-        model = Model().charge_model()
-        scaler = Model().charge_scaler()
+        model = Pipeline().charge_model()
+        scaler = Pipeline().charge_scaler()
 
         new_data = [[form.age, form.sex, form.cp, form.trestbps, form.chol, form.fbs, form.restecg, form.thalach, form.exang, form.oldpeak, form.slope, form.ca, form.thal]]
 
