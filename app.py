@@ -3,7 +3,6 @@ from flask_cors import CORS
 from flask import redirect
 from models import Pipeline
 from schemas import PatientSchema, SuccessResponse, ErrorResponse, success_json, error_json
-
 import pandas as pd
 
 # Inicializa API
@@ -22,8 +21,8 @@ post_register_tag = Tag(name="Predição", description="Efetua a predição de d
 @app.post('/predict', tags=[post_register_tag], responses={"201": SuccessResponse, "400": ErrorResponse})
 def predict(form: PatientSchema):
     try:
-        model = Pipeline().charge_model()
-        scaler = Pipeline().charge_scaler()
+        model = Pipeline().charge('./MachineLearning/pipelines/cardiovascular_disease_predictor.pkl')
+        scaler = Pipeline().charge('./MachineLearning/scalers/scaler.pkl')
 
         new_data = [[form.age, form.sex, form.cp, form.trestbps, form.chol, form.fbs, form.restecg, form.thalach, form.exang, form.oldpeak, form.slope, form.ca, form.thal]]
 

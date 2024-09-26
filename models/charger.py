@@ -2,7 +2,6 @@ import pandas as pd
 
 class Charger: 
 
-    def loadData(self):
+    def loadData(self, url):
         # Carregar o dataset diretamente de uma URL
-        url = "./MachineLearning/data/heart-disease-uci.csv"
         return pd.read_csv(url, delimiter=',')
